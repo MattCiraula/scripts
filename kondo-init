@@ -1,0 +1,5 @@
+#!/bin/sh
+# TODO: generalize to use lein and boot
+
+mkdir .clj-kondo
+clj-kondo --lint "$(clojure -Spath)" --dependencies --parallel --copy-configs

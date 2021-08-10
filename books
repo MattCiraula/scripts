@@ -1,0 +1,2 @@
+#!/bin/sh
+find /home/matt/books/* -type "f"  | dmenu -c -l 12 | xargs -r zathura

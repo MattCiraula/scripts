@@ -1,0 +1,11 @@
+#!/bin/sh
+while true
+do
+	BATTERY="$(acpi | cut -d "," -f 2)"
+	DATE="$(date +"%a %b %d 📅 | %H:%M")"
+	RAM="$(free -h | awk 'FNR==2{print$3}')"
+	CPU="$(top -bn1 | awk 'FNR==3{print 100-$8"%"}')"
+	PACK="$(pacman -Qu | wc -l)"
+	xsetroot -name "$PACK  | $CPU ⛧ | $RAM 🐏| $BATTERY   | $DATE"
+	sleep 3
+done

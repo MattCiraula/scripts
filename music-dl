@@ -1,0 +1,1 @@
+youtube-dl $1 --extract-audio --audio-quality 0 --output "~/audio/music/%(title)s.%(ext)s"

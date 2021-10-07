@@ -1,0 +1,13 @@
+#!/bin/sh
+# goes up directories until it finds a deps.edn file and then runs clj-fmt
+
+while [ "$PWD" != "/" ]; do
+  if [ -e "$PWD/deps.edn" ]; then
+    clj -M:fmt
+    exit 0
+  fi
+  cd ..
+done
+
+echo "Cannot find deps.edn file"
+exit 1

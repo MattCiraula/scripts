@@ -1,0 +1,15 @@
+#!/bin/bash
+
+base=$HOME/aur
+
+for dir in $base/*/
+do
+  dir=${dir%*/} # remove trailing /
+  echo "${dir##*/}"
+  cd $dir
+  git fetch
+  if [ $(git rev-parse HEAD) != $(git rev-parse @{u}) ]; then
+    git pull
+    makepkg -si --noconfirm
+  fi
+done
